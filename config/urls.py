@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 루트로 요청했을때 photo.urls.py로 연결된다.
-    path('', include('photo.urls'))
+    path('', include('photo.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
 
 # static매서드를 통해 media_url에 해당하는 주소를 가진 요청에 대해서는 media_root로 찾아가 응답하도록 로직 구현
