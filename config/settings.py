@@ -125,3 +125,6 @@ STATIC_URL = '/static/'
 #! 업로드 파일을 관리하기 위해 Media_url 옵션을 추가하자
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#! 로그인후 메인페이지 이동하도록 변수 추가
+LOGIN_REDIRECT_URL = '/'

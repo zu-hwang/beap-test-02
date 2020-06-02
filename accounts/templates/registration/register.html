@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% extends 'base.html' %}
+    <!-- 타이틀 -->
+    {% block title %}- Registration{% endblock title%}
+    <!-- 컨텐츠 시작 -->
+    {% block content %}
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 panel panel-default">
+        <div class="alert alert-info">
+          Please enter your account informations.
+        </div>
+        <form action="" method="POST">
+          {{form.as_p}} {% csrf_token %}
+          <input type="submit" class="btn btn-primary" value="Register" />
+        </form>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    {% endblock content%}
+  </body>
+</html>
