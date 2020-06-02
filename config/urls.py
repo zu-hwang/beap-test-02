@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 루트로 요청했을때 photo.urls.py로 연결된다.
     path('', include('photo.urls'))
 ]
+
+# static매서드를 통해 media_url에 해당하는 주소를 가진 요청에 대해서는 media_root로 찾아가 응답하도록 로직 구현
+# 아래 로직은 config/settings.py > DEBUG 모드가 True일때만 동작한다.
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
