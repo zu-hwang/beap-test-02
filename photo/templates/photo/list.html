@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% extends 'base.html' %} {% block title %}- List{% endblock title %}
+    <!-- 컨텐츠 시작 -->
+    {% block content %}
+    <!-- photos라는 변수에 photo테이블의 데이터가 모두 담겨있다. -->
+    {% for post in photos %}
+    <!-- post 라는 변수애 각 데이터 1개를 담아 리스트를 뽑아내자~ -->
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 panel panel-default">
+        <p><img src="{{post.photo.url}}" style="width: 100%;" alt="img" /></p>
+        <button class="btn btn-xs btn-info" type="button">
+          {{post.author.username}}
+        </button>
+        <p>{{post.text|linebreaksbr}}</p>
+        <p class="text-right">
+          <a
+            href="{% url 'photo:photo_detail' pk=post.id %}"
+            class="btn btn-xs btn-success"
+            >댓글달기</a
+          >
+        </p>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    {% endfor %}
+    <!-- ... -->
+    {% endblock %}
+  </body>
+</html>
